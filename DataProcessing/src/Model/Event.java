@@ -1,7 +1,8 @@
 package Model;
 
-public class User {
+public class Event {
 
     private int matchCount;
+
 
 }

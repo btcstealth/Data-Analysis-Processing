@@ -18,7 +18,6 @@ public class Parser {
         String newline = "\n";
 
         try {
-
             br = new BufferedReader(new FileReader(file));
             int index = 1;
             while ((line = br.readLine()) != null) {
@@ -38,6 +37,32 @@ public class Parser {
             }
 
 
+        } catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+        return lines;
+    }
+
+
+    public List<String> parseFile(String filePath, boolean flag){
+        File file = new File(filePath);
+        List<String> lines = new ArrayList<String>();
+
+        BufferedReader br = null;
+        String line = "";
+        String newline = "\n";
+
+        try {
+            br = new BufferedReader(new FileReader(file));
+            while ((line = br.readLine()) != null) {
+                // use comma as separator
+                String[] country = line.split(newline);
+                String l = country[0];
+                boolean notNullOrEmpty = (l != null && !"".equals(l));
+                if (notNullOrEmpty){
+                    lines.add(l);
+                }
+            }
         } catch (IOException ioe){
             ioe.printStackTrace();
         }
